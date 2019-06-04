@@ -1,0 +1,36 @@
+<h4>Restaurant showing</h4>
+<div class="box">
+  <h2><%= @restaurant.name %><br></h2>
+  <%= @restaurant.address %><br>
+  <%= @restaurant.category %><br>
+</div>
+<br>
+
+--------------- Reviews ---------------
+<br>
+<% @restaurant.reviews.each do |review|%>
+<%= review.content %>
+<%= review.rating %><br>
+<% end %>
+<br><br>
+<strong>Add a new review</strong>
+<br>
+
+
+
+
+<%= simple_form_for [@restaurant, @review] do |f| %>
+  <%= f.input :content %> |
+  <%= f.input :rating %>
+  <%= f.submit "add a review", class: "btn btn-primary" %>
+<% end %><br>
+
+
+
+
+
+<br><br>
+<%= link_to "Modify this restaurant", edit_restaurant_path(@restaurant) %>
+<br>
+
+<%= link_to "Restaurants page", "/restaurants" %>
